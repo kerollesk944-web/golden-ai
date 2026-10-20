@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOLDEN AI</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #101114;
+  color: white;
+  padding: 20px;
+}
+header {
+  text-align: center;
+  color: #ffd700;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+#chat {
+  height: 60vh;
+  overflow-y: auto;
+  border: 1px solid #444;
+  border-radius: 15px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+.msg {
+  padding: 12px;
+  border-radius: 12px;
+  margin: 10px 0;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+.bot { background: #25272d; }
+.user { background: #514314; }
+form { display: flex; gap: 8px; }
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #555;
+  background: #22242a;
+  color: white;
+  font-size: 16px;
+}
+button {
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 12px;
+  background: #ffd700;
+  color: black;
+  font-weight: bold;
+}
+#status { color: #aaa; text-align: center; }
+</style>
+</head>
+<body>
+
+<header>✨ GOLDEN AI ✨</header>
+
+<div id="chat">
+  <div class="msg bot">أهلاً بيك! أنا GOLDEN AI 🤖
+لسه بنجهز الاتصال بالذكاء الاصطناعي الحقيقي.</div>
+</div>
+
+<form id="form">
+  <input id="message" placeholder="اكتب رسالتك هنا..." autocomplete="off" required>
+  <button type="submit">إرسال</button>
+</form>
+
+<p id="status">الإصدار التجريبي</p>
+
+<script>
+const form = document.getElementById("form");
+const input = document.getElementById("message");
+const chat = document.getElementById("chat");
+const statusText = document.getElementById("status");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const text = input.value.trim();
+  if (!text) return;
+
+  addMessage(text, "user");
+  input.value = "";
+
+  addMessage(
+    "أنا لسه في مرحلة التجهيز. الواجهة شغالة، لكن الاتصال بنموذج الذكاء الاصطناعي الحقيقي لسه محتاج إعداد خدمة خارجية.",
+    "bot"
+  );
+});
+
+function addMessage(text, type) {
+  const div = document.createElement("div");
+  div.className = "msg " + type;
+  div.textContent = text;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
